@@ -10,6 +10,7 @@ type UserSelectProps = {
 function UserSelect(props: UserSelectProps) {
     const dispatch = useDispatch();
     const todos = useSelector((state: {list: { todos: any[] }}) => state.list.todos);
+    // Move fetch functional to MainApp component, make sure it's just fetch one time
     React.useEffect(
         () => {
             console.log('userSelect');
@@ -22,6 +23,10 @@ function UserSelect(props: UserSelectProps) {
     const [options, setOptions] = React.useState([]);
 
     const { idx } = props;
+    /**
+     * - Move handleChange functional to MainApp component and add it as props, 
+       - We don't need handle functional inside loop
+    */
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const changedTodos = todos.map((t, index) => {
             const res = { ...t }

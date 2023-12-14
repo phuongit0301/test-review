@@ -13,6 +13,7 @@ export default configureStore({
                     newState.todos.push(action.payload);
                     return newState;
                 }
+                // We don't use REMOVE_TODO action so we should remove here
                 case 'REMOVE_TODO': {
                     return {
                         ...state,
